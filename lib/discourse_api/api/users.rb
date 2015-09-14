@@ -66,6 +66,11 @@ module DiscourseApi
         response[:body]
       end
 
+      def get_user_details_by_email(email)
+        response = get("/admin/users/list/active.json?filter=#{email}")
+        response[:body]
+      end
+
       def grant_admin(user_id)
         response = put("admin/users/#{user_id}/grant_admin")
         response[:body]
