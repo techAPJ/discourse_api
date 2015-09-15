@@ -10,12 +10,11 @@ client.api_username = "API_USERNAME"
 # response = client.groups
 # puts response
 GROUP_ID = 41
-USERNAME_ARRAY = []
+USER_EMAIL_ARRAY = []
 
 # read CSV file
 CSV.foreach(File.expand_path("../users.csv", __FILE__)) do |row|
-  user_details = client.get_user_details_by_email(row[0])
-  USERNAME_ARRAY << user_details[0]["username"]
+  USER_EMAIL_ARRAY << row[0]
 end
 
-client.group_add(GROUP_ID, usernames: USERNAME_ARRAY)
+client.group_add(GROUP_ID, user_emails: USER_EMAIL_ARRAY)
